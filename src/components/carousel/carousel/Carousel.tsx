@@ -2,9 +2,9 @@ import style from "./Carousel.module.css";
 import "./conf.css";
 import content from "./NodesContent";
 import { tags } from "./NodesContent";
-import arrow from "/public/carouselImg/arrow.png";
-import playImg from "/public/carouselImg/play.webp";
-import pauseImg from "/public/carouselImg/pause.webp";
+import arrow from "../../../assets/carouselImg/arrow.png";
+import playImg from "../../../assets/carouselImg/play.webp";
+import pauseImg from "../../../assets/carouselImg/pause.webp";
 import { useSlider } from "../hooks/useSlider";
 
 type Props = {};
@@ -24,17 +24,20 @@ function Carousel({}: Props) {
   return (
     <div className={style.carouselContainer}>
       <ul className={style.carousel} style={{ "--index--": activeIndex }}>
-        {content.map((node) => {
-          return node;
-        })}
+        {content}
       </ul>
 
       <div className={style.controls}>
-        <button onClick={playHandler} className={style.play}>
-          <img src={play ? pauseImg : playImg} />
+        <button
+          onClick={playHandler}
+          className={style.play}
+          aria-label={play ? "Pausar carrusel" : "Reproducir carrusel"}
+        >
+          <img src={play ? pauseImg : playImg} alt="" loading="lazy" />
         </button>
         {tags.map((tag, index) => (
           <p
+            key={tag}
             className={activeIndex == index ? style.activeControl : undefined}
             onClick={() => activeIndexHandler(index)}
           >
@@ -46,20 +49,22 @@ function Carousel({}: Props) {
       <button
         className={style.prevButton}
         onClick={() => {
-          activeIndex > 0 && activeIndexHandler(activeIndex - 1);
+          if (activeIndex > 0) activeIndexHandler(activeIndex - 1);
         }}
+        aria-label="Anterior"
       >
-        <img src={arrow} />
+        <img src={arrow} alt="" loading="lazy" />
       </button>
 
       <button
         className={style.nextButton}
         onClick={() => {
-          activeIndex < content.length - 1 &&
+          if (activeIndex < content.length - 1)
             activeIndexHandler(activeIndex + 1);
         }}
+        aria-label="Siguiente"
       >
-        <img src={arrow} />
+        <img src={arrow} alt="" loading="lazy" />
       </button>
     </div>
   );

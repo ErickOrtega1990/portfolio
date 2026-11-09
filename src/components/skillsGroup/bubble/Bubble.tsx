@@ -11,7 +11,7 @@ function Bubble({ imgUrl, title }: Props) {
       <div className={style.bubble}>
         <div className={style.background}>
           <div className={style.logo}>
-            <img src={imgUrl} className={style.img} />
+            <img src={imgUrl} className={style.img} loading="lazy" />
           </div>
           <h1 className={style.h1}>{title}</h1>
         </div>

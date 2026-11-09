@@ -1,7 +1,7 @@
 import style from "./Home.module.css";
-import yo from "../../../public/yo.webp";
-import cv from "../../../public/PDF/Boleta cama.pdf";
-import { useContext, useState } from "react";
+import yo from "../../assets/yo.webp";
+import cv from "../../assets/PDF/Boleta cama.pdf";
+import { useContext, useEffect, useRef, useState } from "react";
 import LoadingPage from "../../LoadingPage/LoadingPage";
 import lenguagesContext from "../../contexts/lenguages/lenguagesContext";
 
@@ -9,12 +9,26 @@ type Props = {};
 
 function Home({}: Props) {
   const [ready, setReady] = useState<boolean>(false);
+  const heroRef = useRef<HTMLImageElement>(null);
   const { lenguage } = useContext(lenguagesContext);
+
+  useEffect(() => {
+    // Si la imagen ya estaba en caché, el evento onLoad no se dispara.
+    if (heroRef.current?.complete) setReady(true);
+  }, []);
 
   return (
     <section id="inicio" className={style.sectionContainer}>
       {ready ? null : <LoadingPage />}
-      <img className={style.img} src={yo} onLoad={() => setReady(true)} />
+      <img
+        ref={heroRef}
+        className={style.img}
+        src={yo}
+        alt="Erick Ortega"
+        decoding="async"
+        onLoad={() => setReady(true)}
+        loading="lazy"
+      />
       {ready && (
         <div className={style.container}>
           <div className={style.animatedDiv}></div>

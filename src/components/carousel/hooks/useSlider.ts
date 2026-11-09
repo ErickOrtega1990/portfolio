@@ -1,47 +1,29 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 
-export function useSlider(content: React.ReactNode[], preset: number) {
+export function useSlider(content: ReactNode[], preset: number) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [segundos, setSegundos] = useState(0);
   const [play, setPlay] = useState(true);
-  const [reset, setReset] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
 
   useEffect(() => {
-    const IntervalId = setInterval(() => {
-      setSegundos((prevSegundos) => prevSegundos + 1);
-      if (activeIndex < content.length - 1) {
-        setActiveIndex(activeIndex + 1);
-      } else setActiveIndex(0);
+    if (!play || content.length < 2) return;
+
+    const intervalId = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % content.length);
     }, preset);
 
-    if (!play || reset) {
-      clearInterval(IntervalId);
-      if (reset) return setReset(false);
-      return;
-    }
+    return () => clearInterval(intervalId);
+  }, [play, preset, content.length, resetKey]);
 
-    return () => clearInterval(IntervalId);
-  }, [segundos, play, reset]);
-
-  const activeIndexHandler = (value: number) => {
+  const activeIndexHandler = useCallback((value: number) => {
     setActiveIndex(value);
-    setReset(true);
-  };
+    setResetKey((key) => key + 1);
+  }, []);
 
-  const playHandler = () => {
-    setPlay(!play);
-  };
+  const playHandler = useCallback(() => {
+    setPlay((prev) => !prev);
+  }, []);
 
-  return {
-    activeIndex,
-    setActiveIndex,
-    segundos,
-    setSegundos,
-    play,
-    setPlay,
-    reset,
-    setReset,
-    activeIndexHandler,
-    playHandler,
-  };
+  return { activeIndex, play, activeIndexHandler, playHandler };
 }

@@ -6,27 +6,23 @@ import StatusFlag from "../../statusFlag/StatusFlag";
 import { useContext, useEffect } from "react";
 import lenguagesContext from "../../../../contexts/lenguages/lenguagesContext";
 
-type Props = {};
-
 export type FormDataType = {
   name: string;
   email: string;
   message: string;
 };
 
-function contactForm({}: Props) {
+function ContactForm() {
   const { register, handleSubmit, reset } = useForm();
   const { sendEmail, resStatus, setResStatus } = useMailjs();
   const { lenguage } = useContext(lenguagesContext);
 
   useEffect(() => {
-    setTimeout(() => {
-      resStatus != "Enviando..."
-        ? setResStatus("Enviando...")
-        : setResStatus("Mensaje enviado");
-      setResStatus("");
-    }, 3000);
-  }, [resStatus]);
+    if (!resStatus) return;
+
+    const timeoutId = setTimeout(() => setResStatus(""), 3000);
+    return () => clearTimeout(timeoutId);
+  }, [resStatus, setResStatus]);
 
   return (
     <form
@@ -34,7 +30,6 @@ function contactForm({}: Props) {
       id="form"
       onSubmit={handleSubmit((data) => {
         sendEmail(data as FormDataType);
-        console.warn(data);
         reset();
       })}
     >
@@ -75,4 +70,4 @@ function contactForm({}: Props) {
   );
 }
 
-export default contactForm;
+export default ContactForm;

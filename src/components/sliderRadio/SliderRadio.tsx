@@ -1,26 +1,40 @@
 import style from "./SliderRadio.module.css";
-import esp from "../../../public/skills/chile.webp";
-import en from "../../../public/skills/ingles.webp";
-import { useContext, useState } from "react";
+import esp from "../../assets/skills/chile.webp";
+import en from "../../assets/skills/ingles.webp";
+import { useContext } from "react";
+import type { KeyboardEvent } from "react";
 import lenguagesContext from "../../contexts/lenguages/lenguagesContext";
 import { lenguages } from "../../lenguages/lenguages";
 
 type Props = {};
 
 function SliderRadio({}: Props) {
-  const [pos, setPos] = useState<number>(0);
-  const { changeLenguage } = useContext(lenguagesContext);
+  const { lenguage, changeLenguage } = useContext(lenguagesContext);
+  const isSpanish = lenguage === lenguages.ES;
 
-  const clickHandle = () => {
-    pos === 0 ? setPos(1) : setPos(0);
-    pos === 0 ? changeLenguage(lenguages.ES) : changeLenguage(lenguages.EN);
+  const clickHandle = () => changeLenguage(lenguage);
+
+  const keyHandle = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      clickHandle();
+    }
   };
 
   return (
-    <div className={style.radioSlider} onClick={clickHandle}>
+    <div
+      className={style.radioSlider}
+      onClick={clickHandle}
+      onKeyDown={keyHandle}
+      role="button"
+      tabIndex={0}
+      aria-label={isSpanish ? "Cambiar a inglés" : "Cambiar a español"}
+    >
       <img
-        src={pos === 0 ? esp : en}
-        className={pos === 0 ? style.radioPos1 : style.radioPos2}
+        src={isSpanish ? esp : en}
+        alt=""
+        className={isSpanish ? style.radioPos1 : style.radioPos2}
+        loading="lazy"
       />
     </div>
   );

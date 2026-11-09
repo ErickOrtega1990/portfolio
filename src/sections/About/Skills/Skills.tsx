@@ -2,24 +2,24 @@ import style from "./Skils.module.css";
 
 import Bubble from "../../../components/skillsGroup/bubble/Bubble";
 
-import mongoLogo from "/public/skills/mongo.webp";
-import expressImg from "/public/skills/express.webp";
-import reactoImg from "/public/skills/react.webp";
+import mongoLogo from "../../../assets/skills/mongo.webp";
+import expressImg from "../../../assets/skills/express.webp";
+import reactoImg from "../../../assets/skills/react.webp";
 
-import html from "/public/skills/html.webp";
-import css from "/public/skills/css.webp";
-import js from "/public/skills/js.webp";
-import ts from "/public/skills/ts.webp";
+import html from "../../../assets/skills/html.webp";
+import css from "../../../assets/skills/css.webp";
+import js from "../../../assets/skills/js.webp";
+import ts from "../../../assets/skills/ts.webp";
 
-import git from "/public/skills/git.webp";
-import docker from "/public/skills/docker.webp";
-import github from "/public/skills/github.webp";
-import opencode from "/public/skills/opencode.webp";
+import git from "../../../assets/skills/git.webp";
+import docker from "../../../assets/skills/docker.webp";
+import github from "../../../assets/skills/github.webp";
+import opencode from "../../../assets/skills/opencode.webp";
 
-import nodeImg from "/public/skills/node.webp";
-import chile from "/public/skills/chile.webp";
-import ingles from "/public/skills/ingles.webp";
-import italiano from "/public/skills/italiano.webp";
+import nodeImg from "../../../assets/skills/node.webp";
+import chile from "../../../assets/skills/chile.webp";
+import ingles from "../../../assets/skills/ingles.webp";
+import italiano from "../../../assets/skills/italiano.webp";
 import SkillsGroup from "../../../components/skillsGroup/SkillsGroup";
 import { useContext } from "react";
 import lenguagesContext from "../../../contexts/lenguages/lenguagesContext";

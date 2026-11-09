@@ -7,6 +7,7 @@
   height: 23px;
   border-radius: 25px;
   border: solid 2px rgb(92, 92, 97);
+  transition: transform 0.2s ease;
 }
 
 .radioSlider:hover {
@@ -18,6 +19,7 @@
   width: 23px;
   height: 23px;
   border-radius: 25px;
+  transition: transform 0.2s ease;
 }
 
 .radioPos2 {
@@ -25,4 +27,5 @@
   width: 23px;
   height: 23px;
   border-radius: 25px;
+  transition: transform 0.2s ease;
 }

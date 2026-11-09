@@ -17,7 +17,6 @@
   top: calc(100% + 5px);
 
   background: var(--navbar-color--);
-  backdrop-filter: var(--blur--);
 
   border-radius: 5px;
 
@@ -29,9 +28,9 @@
   gap: var(--browser-row-gap--);
   padding: var(--browser-y-padding--);
 
-  transition: height var(--transition--);
-
-  transition: var(--transition--);
+  transition:
+    height var(--transition--),
+    opacity var(--transition--);
   transition-delay: 0.1s;
   opacity: 0;
 }

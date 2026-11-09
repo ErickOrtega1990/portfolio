@@ -9,7 +9,6 @@
   align-items: center;
   gap: calc(var(--section-width--) * 0.03);
   background: rgba(231, 231, 236, 0.856);
-  backdrop-filter: blur(10px);
 
   padding: calc(var(--section-width--) * 0.02);
   padding-bottom: calc(var(--section-width--) * 0.04);

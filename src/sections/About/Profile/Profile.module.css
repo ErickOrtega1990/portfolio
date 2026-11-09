@@ -9,7 +9,6 @@
   align-items: center;
   gap: calc(var(--profile-width--) * 0.03);
   background: rgba(29, 36, 70, 0.7);
-  backdrop-filter: blur(10px);
 
   padding: calc(var(--profile-width--) * 0.02);
   padding-bottom: calc(var(--profile-width--) * 0.035);

@@ -1,4 +1,4 @@
-import picture from "/public/cards/profile/gatito.webp";
+import picture from "../../../assets/cards/profile/gatito.webp";
 import style from "./Profile.module.css";
 import { useContext } from "react";
 import lenguagesContext from "../../../contexts/lenguages/lenguagesContext";
@@ -16,6 +16,7 @@ function Profile({}: Props) {
           src={picture}
           alt="profile picture"
           className={style.profilePicture}
+          loading="lazy"
         />
         <p>{lenguage.About1.txt2}</p>
         <p>{lenguage.About1.txt3}</p>

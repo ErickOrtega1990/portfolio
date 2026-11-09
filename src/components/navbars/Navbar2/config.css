@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   /* ----------------------- NAVBAR CONFIG ----------------------- */
 
@@ -13,13 +12,10 @@
   /*------------------------ DIMENSIONS ---------------------------*/
 
   --navbar-height--: 50px;
-  --browser-navbar-width--: 60%100%;
+  --browser-navbar-width--: 100%;
   --browser-navbar-linkcontainer-width--: 40%;
   --browser-link-gap--: 20px;
 
-  --browser-row-gap--: 5px;
-  --mobile-row-gap--: 10pxpx;
-  --mobile-y-pading--: 10px 0 10px 0;
   --browser-y-padding--: 5px;
 
   --browser-navbar-margin-top--: 0px;

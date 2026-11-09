@@ -30,7 +30,9 @@
   opacity: 1;
   background: white;
 
-  transition: 0.35s ease-in-out;
+  transition:
+    transform 0.35s ease-in-out,
+    opacity 0.35s ease-in-out;
 
   height: 1px;
   width: 50%;

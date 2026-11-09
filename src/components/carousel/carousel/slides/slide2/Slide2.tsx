@@ -1,13 +1,13 @@
-import img1 from "/public/carouselImg/2.webp";
+import img1 from "../../../../../assets/carouselImg/2.webp";
 import style from "./Slide2.module.css";
-import lentes from "/public/carouselImg/lentes.webp";
+import lentes from "../../../../../assets/carouselImg/lentes.webp";
 type Props = {};
 
 function slide2({}: Props) {
   return (
     <div className={style.slide2}>
-      <img src={img1} className={style.BackgroundImg} />
-      <img src={lentes} alt="" className={style.product_1} />
+      <img src={img1} className={style.BackgroundImg} loading="lazy" />
+      <img src={lentes} alt="" className={style.product_1} loading="lazy" />
       <h1 className={style.h1}>¡Vive la experiencia!</h1>
       <div className={style.textContainer}>
         <h2 className={style.h2}>wenas!</h2>

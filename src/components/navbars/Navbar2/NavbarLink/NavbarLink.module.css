@@ -2,7 +2,7 @@
 
 .link {
   color: var(--navbar-font-color--);
-  transition: 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
