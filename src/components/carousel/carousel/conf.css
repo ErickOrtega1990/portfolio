@@ -1,0 +1,13 @@
+* {
+  /*--carousel-width--: 619px;*/
+  --carousel-width--: 60vw;
+  --carousel-height--: calc(0.6 * var(--carousel-width--));
+
+  --media-checkpoint-1--: 905px;
+}
+
+@media (max-width: 905px) {
+  * {
+    --carousel-width--: 90vw;
+  }
+}

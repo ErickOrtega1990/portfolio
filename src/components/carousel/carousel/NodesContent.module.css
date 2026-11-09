@@ -1,0 +1,17 @@
+.li {
+  position: relative;
+  list-style: none;
+}
+
+.img {
+  width: var(--carousel-width--);
+  height: 350px;
+  display: flex;
+  object-fit: cover;
+}
+
+.h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

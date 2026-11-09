@@ -1,0 +1,28 @@
+.timeLineItem {
+  --padding--: 10px;
+  width: 90%;
+  border-left: solid 3px rgb(122, 127, 153);
+  position: relative;
+  padding: var(--padding--);
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -8px;
+  top: -20px;
+  border: solid 2px rgb(41, 41, 116);
+  border-radius: 50%;
+}
+
+.h2 {
+  position: absolute;
+  top: -22px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.p {
+}

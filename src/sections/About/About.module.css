@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.sectionContainer {
+  --section-height--: fit-content;
+  --section-width--: 100vw;
+
+  --title-container-height--: calc(var(--section-width--) * 0.2);
+  --title-container-width--: calc(var(--section-width--) * 0.6);
+
+  height: var(--section-height--);
+  width: var(--section-width--);
+  margin: 0;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: rgba(29, 36, 70, 0.7);
+  backdrop-filter: blur(10px);
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.h1 {
+  /* font-size: calc(var(--title-container-width--) * 0.12); */
+  color: rgb(255, 255, 255);
+}
+
+.h2 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: calc(var(--title-container-width--) * 0.0583);
+  color: #6de93c;
+}

@@ -1,0 +1,58 @@
+.profile {
+  --profile-width--: 100vw;
+  --profile-height--: fit-content;
+
+  width: var(--profile-width--);
+  height: var(--profile-height--);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--profile-width--) * 0.03);
+  background: rgba(29, 36, 70, 0.7);
+  backdrop-filter: blur(10px);
+
+  padding: calc(var(--profile-width--) * 0.02);
+  padding-bottom: calc(var(--profile-width--) * 0.035);
+
+  p {
+    width: calc(var(--profile-width--) / 2);
+    text-align: center;
+    padding: 15px;
+    border: solid 1px rgb(28, 33, 110);
+    border-radius: 8px;
+    color: rgba(212, 213, 216, 0.993);
+    background: rgba(12, 12, 37, 0.5);
+    font-size: calc(var(--profile-width--) / 110);
+  }
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
+  /* font-size: calc(var(--profile-width--) * 0.031); */
+
+  color: white;
+}
+
+.profilePicture {
+  height: auto;
+  width: calc(var(--profile-width--) * 0.1);
+  border-radius: 50%;
+  border: solid 3px rgb(62, 65, 110);
+}
+
+@media (max-width: 980px) {
+  .profile {
+    p {
+      width: 90%;
+      font-size: calc(var(--profile-width--) / 40);
+    }
+  }
+  .profilePicture {
+    width: calc(var(--profile-width--) * 0.2);
+  }
+  .h1 {
+    /* font-size: calc(var(--section-width--) * 0.051); */
+  }
+}

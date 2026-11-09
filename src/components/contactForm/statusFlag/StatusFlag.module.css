@@ -1,0 +1,33 @@
+.inProgress {
+  background: #d6d43b;
+  border-radius: 8px;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: solid 1px #b9ca21;
+  box-shadow: 2px 2px 2px rgb(155, 160, 152);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: escalarRender 0.2s ease-out forwards;
+}
+
+.done {
+  background: #23ce3a;
+  border-radius: 8px;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: solid 1px #21ca21;
+  box-shadow: 2px 2px 2px rgb(155, 160, 152);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  color: white;
+  font-size: 20px;
+}

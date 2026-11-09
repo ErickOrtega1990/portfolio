@@ -1,0 +1,21 @@
+@import url("../config.css");
+
+.link {
+  color: var(--navbar-font-color--);
+  transition: 0.2s ease-in-out;
+
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  font-size: var(--navbar-font-size--);
+}
+
+.link:hover {
+  transform: scale(1.025);
+}
+
+@media (max-width: 960px) {
+  .link {
+    font-size: var(--mobile-font-size--);
+  }
+}
