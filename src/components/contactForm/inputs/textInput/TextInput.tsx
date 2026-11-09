@@ -1,4 +1,4 @@
-import style from "./textInput.module.css";
+import style from "./TextInput.module.css";
 
 type Props = {
   type: "text" | "password" | "email" | "textArea";
