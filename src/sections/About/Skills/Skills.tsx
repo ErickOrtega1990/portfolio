@@ -19,7 +19,7 @@ import opencode from "/public/skills/opencode.webp";
 import nodeImg from "/public/skills/node.webp";
 import chile from "/public/skills/chile.webp";
 import ingles from "/public/skills/ingles.webp";
-import italiano from "/public/skills/Italiano.webp";
+import italiano from "/public/skills/italiano.webp";
 import SkillsGroup from "../../../components/skillsGroup/SkillsGroup";
 import { useContext } from "react";
 import lenguagesContext from "../../../contexts/lenguages/lenguagesContext";
