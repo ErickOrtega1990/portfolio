@@ -1,0 +1,26 @@
+/* ============================================================
+   Contenido de diapositivas — títulos en blanco hielo con glow
+   cian sobre las imágenes, en línea con la referencia 1.jpg.
+   ============================================================ */
+
+.li {
+  position: relative;
+  list-style: none;
+}
+
+.img {
+  width: var(--carousel-width--);
+  height: 350px;
+  display: flex;
+  object-fit: cover;
+}
+
+.h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #e9f9ff;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(12, 231, 254, 0.35);
+}

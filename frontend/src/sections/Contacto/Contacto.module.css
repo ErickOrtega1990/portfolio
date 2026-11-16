@@ -1,0 +1,42 @@
+/* ============================================================
+   Contacto — estética de referencia 1.jpg: negro profundo con
+   matiz navy y acentos de cian eléctrico (#0ce7fe).
+   ============================================================ */
+
+.contact {
+  /* Paleta extraída de la imagen de referencia */
+  --contact-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --contact-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  width: 100vw;
+  height: fit-content;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Velo oscuro translúcido: conserva la textura de fondo del sitio */
+  background:
+    radial-gradient(
+      80% 60% at 50% 0%,
+      rgba(var(--contact-cyan), 0.06) 0%,
+      rgba(var(--contact-cyan), 0) 65%
+    ),
+    linear-gradient(180deg, rgba(1, 10, 22, 0.55) 0%, rgba(0, 4, 10, 0.75) 100%);
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: clamp(25px, 5vw, 50px);
+  color: #e9f9ff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 16px rgba(var(--contact-cyan), 0.32);
+
+  margin: auto;
+  margin-top: 20px;
+}

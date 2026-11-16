@@ -1,0 +1,19 @@
+/* ============================================================
+   Encabezado fijo — solo posicionamiento; el estilo visual de la
+   barra de navegación vive en Navbar2.module.css. Se añade un
+   desenfoque de vidrio coherente con la referencia 1.jpg.
+   ============================================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 960px) {
+  .header {
+    height: 0px;
+  }
+}

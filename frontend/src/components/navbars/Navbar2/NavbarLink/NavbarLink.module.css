@@ -1,0 +1,33 @@
+@import url("../config.css");
+
+/* ============================================================
+   Enlaces de navegación — texto azul-gris suave que pasa a cian
+   con glow al pasar el cursor, en línea con la referencia 1.jpg.
+   ============================================================ */
+
+.link {
+  --link-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+
+  color: #b9cfe0;
+  transition:
+    transform 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    text-shadow 0.2s ease-in-out;
+
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  font-size: var(--navbar-font-size--);
+}
+
+.link:hover {
+  transform: scale(1.025);
+  color: #7deeff;
+  text-shadow: 0 0 10px rgba(var(--link-cyan), 0.5);
+}
+
+@media (max-width: 960px) {
+  .link {
+    font-size: var(--mobile-font-size--);
+  }
+}

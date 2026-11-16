@@ -1,0 +1,30 @@
+/* ============================================================
+   Pantalla de carga — estética de referencia 1.jpg: negro
+   profundo con resplandor de cian eléctrico (#0ce7fe).
+   ============================================================ */
+
+.loadingPage {
+  /* Paleta extraída de la imagen de referencia */
+  --loading-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --loading-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  position: absolute;
+  inset: 0;
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+
+  background:
+    radial-gradient(
+      80% 60% at 50% 42%,
+      rgba(var(--loading-cyan), 0.09) 0%,
+      rgba(var(--loading-cyan), 0) 65%
+    ),
+    linear-gradient(180deg, rgba(1, 10, 22, 0.98) 0%, rgba(0, 4, 10, 1) 100%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}

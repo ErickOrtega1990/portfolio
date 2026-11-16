@@ -1,0 +1,55 @@
+/* ============================================================
+   Habilidades — estética de referencia 1.jpg: resplandor cian
+   suave sobre negro profundo, títulos en blanco hielo con glow.
+   ============================================================ */
+
+.skills {
+  /* Paleta extraída de la imagen de referencia */
+  --skills-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --skills-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  --skills-width--: 100vw;
+  --skills-height--: fit-content;
+
+  width: var(--skills-width--);
+  height: var(--skills-height--);
+  min-height: 40vh;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: calc(var(--skills-width--) * 0.02);
+  padding-bottom: calc(var(--skills-width--) * 0.04);
+
+  /* Resplandor central sutil sobre el fondo oscuro del contenedor About */
+  background: radial-gradient(
+    70% 65% at 50% 55%,
+    rgba(var(--skills-cyan), 0.05) 0%,
+    rgba(var(--skills-cyan), 0) 65%
+  );
+}
+
+.container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: clamp(25px, 5vw, 50px);
+  color: #e9f9ff;
+  text-shadow: 0 0 14px rgba(var(--skills-cyan), 0.3);
+  letter-spacing: 0.02em;
+  margin-top: 30px;
+  margin-bottom: 35px;
+}

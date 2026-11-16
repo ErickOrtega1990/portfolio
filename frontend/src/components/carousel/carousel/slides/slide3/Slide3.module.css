@@ -1,0 +1,132 @@
+/* ============================================================
+   Slide 3 — panel de texto de vidrio oscuro con rim cian y
+   tipografía en blanco hielo, estética de la referencia 1.jpg.
+   ============================================================ */
+
+.slide3 {
+  /* Paleta extraída de la imagen de referencia */
+  --slide-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --slide-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  width: var(--carousel-width--);
+  height: var(--carousel-height--);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.BackgroundImg {
+  height: var(--carousel-height--);
+  width: var(--carousel-width--);
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-size: calc(var(--carousel-width--) * 0.05);
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: #e9f9ff;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(var(--slide-cyan), 0.35);
+}
+
+.textContainer {
+  width: 60%;
+  height: 55%;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 10, 22, 0.74) 0%,
+    rgba(0, 4, 10, 0.64) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--slide-cyan), 0.22),
+    0 0 26px rgba(var(--slide-cyan), 0.12);
+  backdrop-filter: blur(6px);
+
+  position: absolute;
+  padding: 10px;
+
+  top: 40%;
+  left: 20%;
+
+  font-family: "Michroma", sans-serif;
+  font-size: 11px;
+  color: #d9edf9;
+
+  border-radius: 0 40px 0 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.h2 {
+  position: absolute;
+  color: #7deeff;
+  text-shadow: 0 0 12px rgba(var(--slide-cyan), 0.4);
+  font-size: calc(100vw * 0.075);
+  left: 10px;
+  top: calc(100vw * -0.035);
+}
+
+.h3 {
+  position: absolute;
+  color: #b9cfe0;
+  font-size: calc(100vw * 0.055);
+  left: 10px;
+  top: calc(100vw * 0.02);
+}
+
+.h4 {
+  position: absolute;
+  font-size: calc(100vw * 0.02);
+  bottom: calc(100vw * 0.01);
+  right: 30px;
+  color: #e9f9ff;
+  text-shadow: 0 0 12px rgba(var(--slide-cyan), 0.35);
+}
+
+.p {
+  position: relative;
+  width: 55%;
+  text-align: justify;
+  bottom: calc(100vw * (-0.095));
+  right: calc(100vw * (0));
+  font-size: calc(100vw * 0.008);
+  color: #d9edf9;
+}
+
+span {
+  color: #7deeff;
+  text-shadow: 0 0 10px rgba(12, 231, 254, 0.4);
+  font-size: calc(100vw * 0.075);
+}
+
+.product_1 {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 85%;
+}
+
+@media (max-width: 905px) {
+  .slide1 {
+    overflow: hidden;
+  }
+
+  .p {
+    width: 70%;
+    height: fit-content;
+
+    bottom: calc(100vw * (-0.095));
+    right: calc(100vw * (0));
+    font-size: calc(100vw * 0.014);
+  }
+
+  .h4 {
+    bottom: 20%;
+    font-size: calc(100vw * 0.035);
+  }
+}

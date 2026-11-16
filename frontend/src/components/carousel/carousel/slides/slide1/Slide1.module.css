@@ -1,0 +1,148 @@
+/* ============================================================
+   Slide 1 — panel de texto de vidrio oscuro con rim cian y
+   tipografía en blanco hielo, estética de la referencia 1.jpg.
+   ============================================================ */
+
+.slide1 {
+  /* Paleta extraída de la imagen de referencia */
+  --slide-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --slide-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  width: var(--carousel-width--);
+  height: var(--carousel-height--);
+  position: relative;
+  margin: auto;
+
+  --text-container-height--: calc(var(--carousel-height--) * 0.549);
+  --textContainer-bottom-ofsset--: 0;
+  --textContainer-left-ofsset--: calc(var(--carousel-width--) * 0.2);
+
+  --h2-font-size--: calc(var(--carousel-width--) * 0.12);
+  --h2-left-offset--: calc(var(--carousel-width--) * 0.025);
+  --h2-bottom-offset--: calc(var(--carousel-width--) * 0.201);
+
+  --h3-left-offset--: calc(var(--carousel-width--) * 0.01);
+  --h3-bottom-offset--: calc(var(--carousel-height--) * 0.26);
+  --h3-font-size--: calc(var(--carousel-width--) * 0.09);
+
+  --h1-font-size--: calc(var(--carousel-width--) * 0.07);
+
+  --h4-font-size--: calc(var(--carousel-width--) * 0.055);
+  --h4-bottom-offset--: calc(var(--carousel-height--) * 0.04);
+  --h4-left-offset--: calc(var(--carousel-width--) * 0.35);
+
+  --span-font-size--: calc(var(--carousel-width--) * 0.12);
+
+  --text-width--: calc(var(--carousel-width--) * 0.47);
+  --text-font-size--: calc(var(--carousel-width--) * 0.015);
+  --text-bottom-offset--: calc(var(--carousel-height--) * 0.14);
+  --text-left-offset--: calc(var(--carousel-width--) * 0.08);
+}
+
+.BackgroundImg {
+  height: var(--carousel-height--);
+  width: var(--carousel-width--);
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-size: var(--h1-font-size--);
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: #e9f9ff;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(var(--slide-cyan), 0.35);
+}
+
+.textContainer {
+  width: 60%;
+  height: var(--text-container-height--);
+  background: linear-gradient(
+    180deg,
+    rgba(1, 10, 22, 0.74) 0%,
+    rgba(0, 4, 10, 0.64) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--slide-cyan), 0.22),
+    0 0 26px rgba(var(--slide-cyan), 0.12);
+  backdrop-filter: blur(6px);
+
+  position: absolute;
+
+  bottom: var(--textContainer-bottom-ofsset--);
+  left: var(--textContainer-left-ofsset--);
+
+  font-family: "Michroma", sans-serif;
+  font-size: 11px;
+  color: #d9edf9;
+
+  border-radius: 0 40px 0 0;
+
+  display: flex;
+}
+
+.h2 {
+  position: absolute;
+  color: #7deeff;
+  text-shadow: 0 0 12px rgba(var(--slide-cyan), 0.4);
+  font-size: var(--h2-font-size--);
+  left: var(--h2-left-offset--);
+  bottom: var(--h2-bottom-offset--);
+  margin: 0;
+}
+
+.h3 {
+  position: absolute;
+  color: #b9cfe0;
+  font-size: var(--h3-font-size--);
+  font-weight: lighter;
+  left: var(--h3-left-offset--);
+  bottom: var(--h3-bottom-offset--);
+}
+
+.h4 {
+  margin: 0;
+  position: absolute;
+  font-size: var(--h4-font-size--);
+  bottom: var(--h4-bottom-offset--);
+  left: var(--h4-left-offset--);
+  color: #e9f9ff;
+  text-shadow: 0 0 12px rgba(var(--slide-cyan), 0.35);
+}
+
+.p {
+  position: absolute;
+  width: var(--text-width--);
+  text-align: justify;
+  bottom: var(--text-bottom-offset--);
+  left: var(--text-left-offset--);
+  font-size: var(--text-font-size--);
+  color: #d9edf9;
+}
+
+.s {
+  color: #7deeff;
+  text-shadow: 0 0 10px rgba(var(--slide-cyan), 0.4);
+  font-size: var(--span-font-size--);
+  font-family: "Michroma", sans-serif;
+}
+
+.product_1 {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: var(--text-container-height--);
+}
+
+@media (max-width: 905px) {
+  .slide1 {
+    overflow: hidden;
+  }
+
+  .textContainer {
+    width: 70%;
+  }
+}

@@ -1,0 +1,90 @@
+.profile {
+  --profile-cyan: 12, 231, 254;
+  --profile-blue: 0, 144, 216;
+
+  --profile-width--: 100vw;
+  --profile-height--: fit-content;
+
+  width: var(--profile-width--);
+  height: var(--profile-height--);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--profile-width--) * 0.03);
+
+  background:
+    radial-gradient(
+      90% 60% at 50% 0%,
+      rgba(var(--profile-cyan), 0.07) 0%,
+      rgba(var(--profile-cyan), 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(1, 10, 22, 0.199) 0%,
+      rgba(0, 4, 10, 0.315) 100%
+    );
+
+  padding: calc(var(--profile-width--) * 0.02);
+  padding-bottom: calc(var(--profile-width--) * 0.035);
+
+  p {
+    width: calc(var(--profile-width--) / 2);
+    text-align: center;
+    padding: 15px;
+    border: solid 1px rgba(var(--profile-cyan), 0.2);
+    border-radius: 12px;
+    color: #b9cfe0;
+    background:
+      radial-gradient(
+        120% 80% at 50% 0%,
+        rgba(var(--profile-cyan), 0.08) 0%,
+        rgba(var(--profile-cyan), 0) 60%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(1, 10, 22, 0.92) 0%,
+        rgba(0, 4, 10, 0.95) 100%
+      );
+    box-shadow:
+      0 0 12px rgba(var(--profile-cyan), 0.12),
+      0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: clamp(25px, 5vw, 50px);
+
+  color: #e9f9ff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 14px rgba(var(--profile-cyan), 0.3);
+}
+
+.profilePicture {
+  height: auto;
+  width: calc(var(--profile-width--) * 0.1);
+  border-radius: 50%;
+  border: solid 3px rgba(var(--profile-cyan), 0.55);
+  box-shadow:
+    0 0 16px rgba(var(--profile-cyan), 0.3),
+    0 0 36px rgba(var(--profile-blue), 0.15);
+}
+
+.p {
+  /* font-size: 19px; */
+  font-size: clamp(16px, 1vw, 22px);
+  font-weight: 200;
+}
+
+@media (max-width: 980px) {
+  .profile {
+    p {
+      width: 90%;
+    }
+  }
+  .profilePicture {
+    width: calc(var(--profile-width--) * 0.2);
+  }
+}

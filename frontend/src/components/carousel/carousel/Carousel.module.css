@@ -1,0 +1,141 @@
+/* ============================================================
+   Carrusel — marco de vidrio oscuro con rim y glow cian,
+   controles y flechas en la estética de la referencia 1.jpg.
+   ============================================================ */
+
+.carouselContainer {
+  /* Paleta extraída de la imagen de referencia */
+  --carousel-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --carousel-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  position: relative;
+  width: var(--carousel-width--);
+  height: var(--carousel-height--);
+  overflow: hidden;
+  margin: auto;
+  border-radius: 16px;
+  border: solid 1px rgba(var(--carousel-cyan), 0.3);
+  background: rgba(1, 10, 22, 0.9);
+  box-shadow:
+    0 0 18px rgba(var(--carousel-cyan), 0.16),
+    0 0 50px rgba(var(--carousel-blue), 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.5);
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.carousel {
+  width: calc(3 * 100%);
+  height: 87.5%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  transition: transform 1s ease-in-out;
+
+  transform: translateX(calc(-33.33333333% * var(--index--)));
+}
+
+.prevButton,
+.nextButton {
+  top: 45%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  width: 10%px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(2, 12, 24, 0.6);
+  backdrop-filter: blur(6px);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--carousel-cyan), 0.28),
+    0 0 12px rgba(var(--carousel-cyan), 0.18);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  img {
+    height: 100%;
+    width: 100%;
+    filter: drop-shadow(0 0 4px rgba(var(--carousel-cyan), 0.5));
+  }
+}
+
+.prevButton {
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.nextButton {
+  right: 0;
+  cursor: pointer;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background: rgba(var(--carousel-cyan), 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--carousel-cyan), 0.5),
+    0 0 18px rgba(var(--carousel-cyan), 0.35);
+}
+
+.arrow {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  background: none;
+  color: #b9cfe0;
+  width: 100%;
+  height: 6%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.controls p {
+  transition:
+    font-size 0.4s ease,
+    font-weight 0.4s ease,
+    color 0.4s ease,
+    text-shadow 0.4s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.play {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  position: relative;
+  bottom: 1px;
+}
+
+.play img {
+  height: 10px;
+  width: 10px;
+  filter: drop-shadow(0 0 4px rgba(var(--carousel-cyan), 0.5));
+}
+
+.activeControl {
+  font-size: 12px;
+  font-weight: bolder;
+  color: #7deeff;
+  text-shadow: 0 0 10px rgba(var(--carousel-cyan), 0.55);
+}

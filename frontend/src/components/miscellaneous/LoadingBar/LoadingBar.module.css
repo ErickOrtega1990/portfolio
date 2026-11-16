@@ -1,0 +1,72 @@
+/* ============================================================
+   Barra de carga — barras de neón cian (#0ce7fe -> #0090d8)
+   sobre negro profundo, en línea con la referencia 1.jpg.
+   ============================================================ */
+
+.loadingBar {
+  --loadingbar-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --loadingbar-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  height: 150px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.h1 {
+  font-size: 50px;
+  color: #e9f9ff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 16px rgba(12, 231, 254, 0.32);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(125, 238, 255, 1) 0%,
+    rgba(12, 231, 254, 1) 45%,
+    rgba(0, 144, 216, 1) 100%
+  );
+  border-radius: 10px;
+  box-shadow:
+    0 0 14px rgba(12, 231, 254, 0.45),
+    0 0 30px rgba(0, 144, 216, 0.25);
+  transform-origin: center;
+  transform: scaleY(0);
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform;
+}
+.bar2 {
+  animation-delay: 1150ms;
+}
+.bar3 {
+  animation-delay: 1250ms;
+}
+
+@keyframes loading {
+  0% {
+    transform: scaleY(0);
+  }
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  75% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}

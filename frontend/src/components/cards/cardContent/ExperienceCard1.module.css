@@ -1,0 +1,83 @@
+/* ============================================================
+   Contenido de la tarjeta de experiencia — línea de tiempo con
+   línea luminosa cian -> azul y nodos de neón, en línea con la
+   referencia 1.jpg.
+   ============================================================ */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeLineItem {
+  --padding--: 10px;
+  --timeline-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --timeline-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  width: 90%;
+  position: relative;
+  padding: var(--padding--);
+
+  /* Línea base sutil; el degradado luminoso lo aporta ::before */
+  border-left: solid 1px rgba(var(--timeline-cyan), 0.28);
+}
+
+/* Degradado luminoso de la línea de tiempo */
+.timeLineItem::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--timeline-cyan), 0.85) 0%,
+    rgba(var(--timeline-blue), 0.35) 60%,
+    rgba(var(--timeline-blue), 0) 100%
+  );
+  box-shadow: 0 0 8px rgba(var(--timeline-cyan), 0.35);
+  pointer-events: none;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -8px;
+  top: -20px;
+  border: solid 2px rgba(var(--timeline-blue), 0.9);
+  border-radius: 50%;
+  background: rgb(var(--timeline-cyan));
+  box-shadow:
+    0 0 8px rgba(var(--timeline-cyan), 0.8),
+    0 0 16px rgba(var(--timeline-blue), 0.5);
+}
+
+.h1 {
+  font-size: clamp(25px, 2vw, 60px);
+  font-weight: 500;
+}
+
+.h2 {
+  position: absolute;
+  top: -22px;
+  left: 20px;
+
+  font-size: clamp(12px, 0.9vw, 20px);
+  font-weight: 500;
+  color: #7deeff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(var(--timeline-cyan), 0.35);
+}
+
+.p {
+  color: #b9cfe0;
+  line-height: 1.6;
+  /* font-size: 19px; */
+  font-size: clamp(12px, 0.8vw, 19px);
+  font-weight: 200;
+}

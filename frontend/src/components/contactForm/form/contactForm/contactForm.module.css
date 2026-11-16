@@ -1,0 +1,121 @@
+/* ============================================================
+   Formulario de contacto — superficie de vidrio oscuro con rim
+   y glow cian, en línea con la referencia 1.jpg.
+   ============================================================ */
+
+.form {
+  /* Paleta extraída de la imagen de referencia */
+  --form-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --form-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  width: clamp(365px, 50%, 95%);
+  height: fit-content;
+  padding: 20px;
+  gap: 15px;
+
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: top;
+  justify-content: space-around;
+
+  box-shadow:
+    0 0 18px rgba(var(--form-cyan), 0.14),
+    0 0 50px rgba(var(--form-blue), 0.07),
+    0 12px 30px rgba(0, 0, 0, 0.5);
+
+  background:
+    radial-gradient(
+      120% 80% at 50% 0%,
+      rgba(var(--form-cyan), 0.07) 0%,
+      rgba(var(--form-cyan), 0) 60%
+    ),
+    linear-gradient(180deg, rgba(1, 10, 22, 0.95) 0%, rgba(0, 4, 10, 0.97) 100%);
+
+  * {
+    color: #b9cfe0;
+  }
+}
+
+.inputContainer {
+  background-color: rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(var(--form-cyan), 0.18);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 95%;
+  height: fit-content;
+  gap: 15px;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.callToAction {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+}
+
+.t1 {
+  /* font-size: 30px; */
+  font-size: clamp(12px, 4vw, 30px);
+  font-weight: 600;
+  color: #e9f9ff;
+  text-shadow: 0 0 14px rgba(var(--form-cyan), 0.3);
+}
+
+.t2 {
+  /* font-size: calc(14px * 5.5); */
+  font-size: clamp(50px, 4vw, 80px);
+  color: #7deeff;
+  text-shadow: 0 0 12px rgba(var(--form-cyan), 0.3);
+}
+
+.p {
+  /* font-size: 20px; */
+  font-size: clamp(16px, 1vw, 22px);
+  font-weight: 200;
+  color: #b9cfe0;
+}
+
+.submit {
+  width: 30%;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(
+    180deg,
+    rgba(125, 238, 255, 0.95) 0%,
+    rgba(12, 231, 254, 0.9) 45%,
+    rgba(0, 144, 216, 0.9) 100%
+  );
+  color: #001018;
+  font-weight: 400;
+  box-shadow:
+    0 0 14px rgba(var(--form-cyan), 0.3),
+    0 0 30px rgba(var(--form-blue), 0.15);
+  transition:
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.submit:hover {
+  cursor: pointer;
+  filter: brightness(1.06);
+  box-shadow:
+    0 0 20px rgba(var(--form-cyan), 0.45),
+    0 0 44px rgba(var(--form-blue), 0.22);
+}
+
+.submit:active {
+  box-shadow: 0 0 10px rgba(var(--form-cyan), 0.3);
+}
+
+@media (max-width: 1150px) {
+  .form {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}

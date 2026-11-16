@@ -1,0 +1,60 @@
+/* ============================================================
+   Experiencia — estética de referencia 1.jpg: fondo negro con
+   matiz navy, acentos de cian eléctrico (#0ce7fe) y azul
+   profundo (#0090d8).
+   ============================================================ */
+
+.experience {
+  /* Paleta extraída de la imagen de referencia */
+  --experience-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --experience-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  --section-width--: 100vw;
+  --section-height--: fit-content;
+
+  width: var(--section-width--);
+  height: var(--section-height--);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--section-width--) * 0.03);
+
+  background:
+    radial-gradient(
+      90% 55% at 50% 0%,
+      rgba(var(--experience-cyan), 0.06) 0%,
+      rgba(var(--experience-cyan), 0) 60%
+    ),
+    linear-gradient(180deg, rgba(1, 10, 22, 0.94) 0%, rgba(0, 4, 10, 0.97) 100%);
+
+  padding: calc(var(--section-width--) * 0.02);
+  padding-bottom: calc(var(--section-width--) * 0.04);
+}
+
+.h1 {
+  font-family: "Michroma", sans-serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: clamp(25px, 5vw, 50px);
+  color: #e9f9ff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 14px rgba(var(--experience-cyan), 0.3);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  row-gap: 5vh;
+  column-gap: 3vw;
+}
+
+@media (max-width: 980px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .h1 {
+    /* font-size: calc(var(--section-width--) * 0.051); */
+  }
+}

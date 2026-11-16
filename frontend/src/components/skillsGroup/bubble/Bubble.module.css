@@ -1,0 +1,104 @@
+.bubble {
+  --bubble-cyan: 12, 231, 254;
+  --bubble-blue: 0, 144, 216;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+
+  background: linear-gradient(
+    155deg,
+    rgba(var(--bubble-cyan), 0.65) 0%,
+    rgba(var(--bubble-blue), 0.32) 30%,
+    rgba(var(--bubble-blue), 0.1) 55%,
+    rgba(var(--bubble-cyan), 0.08) 78%,
+    rgba(var(--bubble-cyan), 0.45) 100%
+  );
+
+  border: none;
+  border-radius: 14px;
+
+  box-shadow:
+    0 0 12px rgba(var(--bubble-cyan), 0.2),
+    0 0 34px rgba(var(--bubble-blue), 0.1),
+    0 10px 24px rgba(0, 0, 0, 0.55);
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto;
+  height: 45%;
+  border-radius: 13px 13px 0 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--bubble-cyan), 0.1) 0%,
+    rgba(var(--bubble-cyan), 0) 100%
+  );
+  pointer-events: none;
+}
+
+.bubble:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 18px rgba(var(--bubble-cyan), 0.32),
+    0 0 46px rgba(var(--bubble-blue), 0.16),
+    0 14px 28px rgba(0, 0, 0, 0.6);
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  padding: 10px;
+
+  background:
+    radial-gradient(
+      120% 85% at 50% 0%,
+      rgba(var(--bubble-cyan), 0.09) 0%,
+      rgba(var(--bubble-cyan), 0) 60%
+    ),
+    linear-gradient(180deg, rgba(1, 10, 22, 0.95) 0%, rgba(0, 4, 10, 0.97) 100%);
+}
+
+.logo {
+  height: clamp(35px, 2.5vw, 80px);
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  height: 90%;
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(var(--bubble-cyan), 0.18));
+}
+
+.h1 {
+  color: #e9f9ff;
+  font-weight: 300;
+  font-size: clamp(12px, 0.8vw, 19px);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 10px rgba(var(--bubble-cyan), 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    transition: none;
+  }
+
+  .bubble:hover {
+    transform: none;
+  }
+}

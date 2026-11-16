@@ -1,0 +1,88 @@
+/* ============================================================
+   Lista desplegable — panel de vidrio oscuro con rim y glow
+   cian, en línea con la referencia 1.jpg.
+   ============================================================ */
+
+.dropdownContainer {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownList {
+  /* Paleta extraída de la imagen de referencia */
+  --dropdown-cyan: 12, 231, 254; /* #0ce7fe – cian eléctrico */
+  --dropdown-blue: 0, 144, 216; /* #0090d8 – azul profundo   */
+
+  --list-width--: 200px;
+
+  height: 0%;
+  width: var(--list-width--);
+  position: absolute;
+  transform-origin: center top;
+  transform: translate(0%, 0%);
+  top: calc(100% + 5px);
+
+  background:
+    radial-gradient(
+      120% 100% at 50% 0%,
+      rgba(var(--dropdown-cyan), 0.08) 0%,
+      rgba(var(--dropdown-cyan), 0) 65%
+    ),
+    linear-gradient(180deg, rgba(2, 12, 24, 0.96) 0%, rgba(0, 4, 10, 0.98) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--dropdown-cyan), 0.18),
+    0 0 18px rgba(var(--dropdown-cyan), 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: var(--browser-row-gap--);
+  padding: var(--browser-y-padding--);
+
+  transition:
+    height var(--transition--),
+    opacity var(--transition--);
+  transition-delay: 0.1s;
+  opacity: 0;
+}
+
+.dropdownContainer:hover {
+  .dropdownList {
+    height: auto;
+    width: var(--list-width--);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .dropdownContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .dropdownList {
+    --list-width--: 250px;
+    position: relative;
+    left: 0;
+    top: 5px;
+    height: 0px;
+    width: var(--list-width--);
+    padding: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 12, 24, 0.96) 0%,
+      rgba(0, 4, 10, 0.98) 100%
+    );
+
+    .p {
+      font-size: var(--mobile-font-size--);
+    }
+  }
+}
