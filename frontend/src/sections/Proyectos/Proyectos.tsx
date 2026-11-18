@@ -65,6 +65,8 @@ function Proyectos() {
             linkLabel={lenguage.Projects.txt1}
             underDevelopment={project.underDevelopment}
             underDevelopmentLabel={lenguage.Projects.txt2}
+            readMoreLabel={lenguage.Projects.txt3}
+            readLessLabel={lenguage.Projects.txt4}
             technologies={project.technologies}
             description={project.description}
             image={project.image}

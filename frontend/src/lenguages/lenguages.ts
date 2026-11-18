@@ -47,6 +47,8 @@ export const lenguages = {
       txt0: "Proyectos",
       txt1: "Ver proyecto",
       txt2: "En desarrollo",
+      txt3: "Leer más",
+      txt4: "Leer menos",
     },
     Contact: {
       txt0: "Contacto",
@@ -120,6 +122,8 @@ export const lenguages = {
       txt0: "Projects",
       txt1: "View project",
       txt2: "In development",
+      txt3: "Read more",
+      txt4: "Read less",
     },
     Contact: {
       txt0: "Contact",

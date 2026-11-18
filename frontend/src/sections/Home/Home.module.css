@@ -220,14 +220,6 @@
   background: #07131f;
 }
 
-/* En móvil la navbar se superpone y el header no ocupa altura, así que el
-   hero compensa ese offset para seguir centrado en el área visible. */
-@media (max-width: 960px) {
-  .hero {
-    margin-top: var(--nav-offset);
-  }
-}
-
 @media (max-width: 900px) {
   .hero {
     padding: 60px 6vw;

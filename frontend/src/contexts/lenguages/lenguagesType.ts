@@ -46,6 +46,8 @@ type Texts = {
     txt0: string;
     txt1: string;
     txt2: string;
+    txt3: string;
+    txt4: string;
   };
   Contact: {
     txt0: string;
