@@ -3,14 +3,16 @@
 .hero {
   --cyan: 12, 231, 254;
   --blue: 0, 144, 216;
+  --nav-offset: calc(
+    var(--navbar-height--, 50px) + var(--browser-navbar-margin-top--, 0px)
+  );
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100vh - var(--nav-offset));
+  min-height: calc(100dvh - var(--nav-offset));
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 6vw 80px;
   box-sizing: border-box;
   overflow: hidden;
   color: #eafaff;
@@ -76,7 +78,6 @@
 
 .titleContainer {
   width: clamp(25rem, 31.5vw, 37rem);
-  /* background-color: red; */
 }
 
 .title {
@@ -94,7 +95,7 @@
   line-height: 6rem;
   text-wrap: wrap;
   text-align: center;
-  color: rgba(27, 27, 27, 0.795);
+  color: rgba(26, 25, 25, 0.808);
   line-height: 0.9;
 }
 
@@ -219,9 +220,17 @@
   background: #07131f;
 }
 
+/* En móvil la navbar se superpone y el header no ocupa altura, así que el
+   hero compensa ese offset para seguir centrado en el área visible. */
+@media (max-width: 960px) {
+  .hero {
+    margin-top: var(--nav-offset);
+  }
+}
+
 @media (max-width: 900px) {
   .hero {
-    padding: 110px 6vw 70px;
+    padding: 60px 6vw;
   }
 
   .content {
@@ -253,7 +262,7 @@
 
 @media (max-width: 520px) {
   .hero {
-    padding: 100px 5vw 60px;
+    padding: 50px 5vw;
   }
 
   .kicker {
