@@ -1,4 +1,4 @@
-import picture from "../../../assets/cards/profile/gatito.webp";
+import picture from "../../../assets/yo.webp";
 import style from "./Profile.module.css";
 import { useContext } from "react";
 import lenguagesContext from "../../../contexts/lenguages/lenguagesContext";

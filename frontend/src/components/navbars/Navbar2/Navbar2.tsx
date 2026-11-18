@@ -18,6 +18,10 @@ function Navbar1({}: Props) {
     setShowBar(!showBar);
   };
 
+  const closeBar = () => {
+    setShowBar(false);
+  };
+
   return (
     <>
       <ToggleButton setShowBar={showBarHandler} showBar={showBar} />
@@ -29,7 +33,7 @@ function Navbar1({}: Props) {
           className={style.mobileLinkContainer}
           style={showBar ? show : undefined}
         >
-          <NavbarContent />
+          <NavbarContent onNavigate={closeBar} />
         </div>
       </div>
     </>

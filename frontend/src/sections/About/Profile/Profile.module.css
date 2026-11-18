@@ -64,7 +64,7 @@
 
 .profilePicture {
   height: auto;
-  width: calc(var(--profile-width--) * 0.1);
+  width: clamp(10rem, 15vw, 15rem);
   border-radius: 50%;
   border: solid 3px rgba(var(--profile-cyan), 0.55);
   box-shadow:
@@ -83,8 +83,5 @@
     p {
       width: 90%;
     }
-  }
-  .profilePicture {
-    width: calc(var(--profile-width--) * 0.2);
   }
 }

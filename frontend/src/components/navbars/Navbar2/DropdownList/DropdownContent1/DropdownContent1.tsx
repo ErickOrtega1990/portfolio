@@ -2,15 +2,21 @@ import { useContext } from "react";
 import NavbarLink from "../../NavbarLink/NavbarLink";
 import lenguagesContext from "../../../../../contexts/lenguages/lenguagesContext";
 
-type Props = {};
+type Props = { onNavigate?: () => void };
 
-function DropdownContent1({}: Props) {
+function DropdownContent1({ onNavigate }: Props) {
   const { lenguage } = useContext(lenguagesContext);
   return (
     <>
-      <NavbarLink href="#formacion">{lenguage.navBar.txt21}</NavbarLink>
-      <NavbarLink href="#experiencia">{lenguage.navBar.txt22}</NavbarLink>
-      <NavbarLink href="#habilidades">{lenguage.navBar.txt23}</NavbarLink>
+      <NavbarLink href="#formacion" onNavigate={onNavigate}>
+        {lenguage.navBar.txt21}
+      </NavbarLink>
+      <NavbarLink href="#experiencia" onNavigate={onNavigate}>
+        {lenguage.navBar.txt22}
+      </NavbarLink>
+      <NavbarLink href="#habilidades" onNavigate={onNavigate}>
+        {lenguage.navBar.txt23}
+      </NavbarLink>
     </>
   );
 }
