@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import style from "./ProjectCard.module.css";
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
   linkLabel?: string;
   underDevelopment?: boolean;
   underDevelopmentLabel?: string;
+  readMoreLabel?: string;
+  readLessLabel?: string;
 };
 
 function ProjectCard({
@@ -24,7 +27,12 @@ function ProjectCard({
   linkLabel = "Ver proyecto",
   underDevelopment = false,
   underDevelopmentLabel = "En desarrollo",
+  readMoreLabel = "Leer más",
+  readLessLabel = "Leer menos",
 }: Props) {
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const descriptionId = useId();
+
   return (
     <article className={style.card}>
       <div className={style.media}>
@@ -89,9 +97,31 @@ function ProjectCard({
           {subtitle && <p className={style.subtitle}>{subtitle}</p>}
         </div>
 
-        <p className={style.description} tabIndex={0}>
-          {description}
-        </p>
+        <div
+          className={`${style.descriptionCollapse} ${
+            isDescriptionExpanded ? style.expanded : ""
+          }`}
+        >
+          <div className={style.descriptionInner}>
+            <p
+              id={descriptionId}
+              className={style.description}
+              tabIndex={0}
+            >
+              {description}
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className={style.toggleDescription}
+          onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+          aria-expanded={isDescriptionExpanded}
+          aria-controls={descriptionId}
+        >
+          {isDescriptionExpanded ? readLessLabel : readMoreLabel}
+        </button>
 
         {(href || underDevelopment) && (
           <div className={style.footer}>
