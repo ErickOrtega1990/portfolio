@@ -50,7 +50,6 @@
   transition:
     height var(--transition--),
     opacity var(--transition--);
-  transition-delay: 0.1s;
   opacity: 0;
 }
 

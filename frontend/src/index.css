@@ -1,3 +1,39 @@
+/* Fuentes autoalojadas (solo subconjunto latino).
+   Evita el request bloqueante a fonts.googleapis.com en la primera carga.
+   Splash está limitado a las letras del nombre del hero; si cambia el texto,
+   actualiza el subconjunto en public/fonts/splash.woff2. */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/montserrat-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Michroma";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/michroma.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Almarai";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/almarai-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Splash";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/splash.woff2") format("woff2");
+}
+
 h1 {
   font-size: 50px;
 }
@@ -109,5 +145,16 @@ section[id] {
 @media (max-width: 980px) {
   section[id] {
     scroll-margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -76,6 +76,7 @@
     height: 0px;
     width: 100%;
     opacity: 0;
+    pointer-events: none;
     overflow: auto;
     background: var(--navbar-color--);
     padding: var(--mobile-y-pading--);

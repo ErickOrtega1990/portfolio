@@ -54,7 +54,10 @@ function Home() {
               src={yo}
               alt={lenguage.Home.txt1}
               className={style.photo}
+              width={1024}
+              height={1024}
               loading="eager"
+              fetchPriority="high"
             />
           </div>
         </div>

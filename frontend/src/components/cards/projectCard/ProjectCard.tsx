@@ -42,6 +42,7 @@ function ProjectCard({
             src={image}
             alt={imageAlt ?? title}
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className={style.placeholder}>

@@ -9,7 +9,8 @@ const show = {
   height: "auto",
   overflow: "scroll",
   opacity: "1",
-};
+  pointerEvents: "auto",
+} as const;
 
 function Navbar1({}: Props) {
   const [showBar, setShowBar] = useState(false);

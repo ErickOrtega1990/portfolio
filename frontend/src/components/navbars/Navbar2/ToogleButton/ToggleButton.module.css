@@ -42,8 +42,8 @@
   box-shadow: 0 0 6px rgba(var(--toggle-cyan), 0.6);
 
   transition:
-    transform 0.35s ease-in-out,
-    opacity 0.35s ease-in-out;
+    transform 0.18s ease-out,
+    opacity 0.18s ease-out;
 
   height: 1px;
   width: 50%;
