@@ -6,7 +6,6 @@ type Props = {};
 function Contacto({}: Props) {
   return (
     <section id="contacto" className={style.contact}>
-      {/* <h1 className={style.h1}>{lenguage.Contact.txt0}</h1> */}
       <ContactForm />
     </section>
   );

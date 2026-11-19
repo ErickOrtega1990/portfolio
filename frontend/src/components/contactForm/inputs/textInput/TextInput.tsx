@@ -5,15 +5,17 @@ type Props = {
   id: string;
   label?: string;
   placeHolder: string;
+  onclick: () => void;
 };
 
-function textInput({ type, id, placeHolder, label, ...rest }: Props) {
+function textInput({ type, id, placeHolder, label, onclick, ...rest }: Props) {
   const singleLineInput = (
     <input
       className={style.textInput}
       type={type}
       id={id}
       placeholder={placeHolder}
+      onClick={onclick}
       {...rest}
     />
   );
@@ -24,6 +26,7 @@ function textInput({ type, id, placeHolder, label, ...rest }: Props) {
       placeholder={placeHolder}
       className={style.textArea}
       rows={10}
+      onClick={onclick}
       {...rest}
     ></textarea>
   );
