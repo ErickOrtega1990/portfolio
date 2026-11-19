@@ -1,7 +1,7 @@
 import style from "./contactForm.module.css";
 import TextInput from "../../inputs/textInput/TextInput";
 import { useForm } from "react-hook-form";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, type FormEvent } from "react";
 import lenguagesContext from "../../../../contexts/lenguages/lenguagesContext";
 import StatusFlag from "../../statusFlag/StatusFlag";
 
@@ -11,12 +11,12 @@ export type FormDataType = {
   message: string;
 };
 
-const TIMEOUT_MS = 10000;
+const TIMEOUT_MS = 60000;
 const TIMEOUT_MESSAGE =
   "Error al enviar su correo, por favor, inténtelo mas tarde";
 
 function ContactForm() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, reset } = useForm();
   const { lenguage } = useContext(lenguagesContext);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -80,14 +80,27 @@ function ContactForm() {
     setMessage("");
   };
 
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // El autocompletado del navegador escribe directamente en el DOM sin
+    // disparar el onChange de React, por lo que react-hook-form no conoce
+    // esos valores. Leemos el formulario para enviar lo que ve el usuario.
+    const formData = new FormData(event.currentTarget);
+    sendEmail({
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      message: String(formData.get("message") ?? ""),
+    });
+    reset();
+  };
+
   return (
     <form
       className={style.form}
       id="form"
-      onSubmit={handleSubmit((data) => {
-        sendEmail(data as FormDataType);
-        reset();
-      })}
+      onSubmit={onSubmit}
+      autoComplete="off"
     >
       <div className={style.callToAction}>
         <span className={style.t1}>{lenguage.Contact.txt1}</span>
@@ -96,17 +109,24 @@ function ContactForm() {
         <p className={style.p}>{lenguage.Contact.txt4}</p>
       </div>
       <div className={style.inputContainer}>
+        {/* Chrome ignora autoComplete="off" en campos de nombre y correo y
+            sigue ofreciendo el autocompletado. "new-password" es el único
+            valor que respeta de forma fiable en estos campos: no hay ningún
+            campo de contraseña real, se usa solo para desactivar las
+            sugerencias del navegador. */}
         <TextInput
           type="text"
           id="nombre"
           onclick={() => resetResult()}
           placeHolder={lenguage.Contact.form.txt1}
+          autoComplete="new-password"
           {...register("name")}
         ></TextInput>
         <TextInput
           type="email"
           placeHolder={lenguage.Contact.form.txt2}
           id="email"
+          autoComplete="new-password"
           onclick={() => resetResult()}
           {...register("email")}
         ></TextInput>
@@ -115,6 +135,7 @@ function ContactForm() {
           label=""
           placeHolder={lenguage.Contact.form.txt3}
           id="message"
+          autoComplete="off"
           onclick={() => resetResult()}
           {...register("message")}
         ></TextInput>

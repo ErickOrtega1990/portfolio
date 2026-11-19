@@ -6,15 +6,17 @@ type Props = {
   label?: string;
   placeHolder: string;
   onclick: () => void;
+  autoComplete?: string;
 };
 
-function textInput({ type, id, placeHolder, label, onclick, ...rest }: Props) {
+function textInput({ type, id, placeHolder, label, onclick, autoComplete, ...rest }: Props) {
   const singleLineInput = (
     <input
       className={style.textInput}
       type={type}
       id={id}
       placeholder={placeHolder}
+      autoComplete={autoComplete}
       onClick={onclick}
       {...rest}
     />
