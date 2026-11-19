@@ -18,7 +18,7 @@ function ContactForm() {
   const [message, setMessage] = useState<string>("");
 
   const sendEmail = async (data: FormDataType) => {
-    const url = "http://127.0.0.1:3000/api/contact";
+    const url = import.meta.env.VITE_MAILING;
     setIsPending(true);
     const response = fetch(url, {
       method: "POST",
