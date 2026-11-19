@@ -8,17 +8,17 @@ Este documento explica qué se añadió para que `https://www.erickortegadev.cl/
 
 ## Qué se hizo
 
-| Archivo | Cambio | Para qué sirve |
-| --- | --- | --- |
-| `index.html` | `<link rel="canonical">` | Dice a Google que la versión oficial es `https://www.erickortegadev.cl/`. El dominio sin `www` redirige con `301` a `www`, así que evita duplicados. |
-| `index.html` | `meta description` mejorada | Describe el sitio con palabras clave reales: React, Node.js, MongoDB, IoT, automatización, Chile. |
-| `index.html` | `meta robots` | `index, follow, max-image-preview:large`: permite indexar y muestra imagen grande en resultados. |
-| `index.html` | Open Graph (`og:*`) | Controla título, descripción e imagen al compartir en WhatsApp, LinkedIn, X, etc. |
-| `index.html` | Twitter Card (`twitter:*`) | Igual que Open Graph, para X/Twitter. |
-| `index.html` | JSON-LD `Person` | Datos estructurados: nombre, rol, habilidades, universidad, ubicación, email y GitHub. Ayuda a Google a entender quién es la persona. |
-| `public/robots.txt` | Archivo nuevo | Permite a todos los crawlers y declara la ruta del sitemap. |
-| `public/sitemap.xml` | Archivo nuevo | Lista la URL principal del sitio. |
-| `public/og-image.webp` | Copia de `src/assets/yo.webp` | Imagen de vista previa al compartir el enlace. |
+| Archivo                | Cambio                        | Para qué sirve                                                                                                                                       |
+| ---------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `index.html`           | `<link rel="canonical">`      | Dice a Google que la versión oficial es `https://www.erickortegadev.cl/`. El dominio sin `www` redirige con `301` a `www`, así que evita duplicados. |
+| `index.html`           | `meta description` mejorada   | Describe el sitio con palabras clave reales: React, Node.js, MongoDB, IoT, automatización, Chile.                                                    |
+| `index.html`           | `meta robots`                 | `index, follow, max-image-preview:large`: permite indexar y muestra imagen grande en resultados.                                                     |
+| `index.html`           | Open Graph (`og:*`)           | Controla título, descripción e imagen al compartir en WhatsApp, LinkedIn, X, etc.                                                                    |
+| `index.html`           | Twitter Card (`twitter:*`)    | Igual que Open Graph, para X/Twitter.                                                                                                                |
+| `index.html`           | JSON-LD `Person`              | Datos estructurados: nombre, rol, habilidades, universidad, ubicación, email y GitHub. Ayuda a Google a entender quién es la persona.                |
+| `public/robots.txt`    | Archivo nuevo                 | Permite a todos los crawlers y declara la ruta del sitemap.                                                                                          |
+| `public/sitemap.xml`   | Archivo nuevo                 | Lista la URL principal del sitio.                                                                                                                    |
+| `public/og-image.webp` | Copia de `src/assets/yo.webp` | Imagen de vista previa al compartir el enlace.                                                                                                       |
 
 `npm run build` verificado: los archivos `robots.txt`, `sitemap.xml` y `og-image.webp` se copian correctamente a `dist/`.
 
@@ -49,7 +49,7 @@ Edita `index.html`:
 
 <meta
   name="description"
-  content="Portafolio de Erick Ortega, desarrollador fullstack especializado en React, Node.js, MongoDB, IoT y automatización industrial en Santiago de Chile."
+  content="Portafolio de Erick Ortega, desarrollador fullstack especializado en React, Node.js, MongoDB, IoT y automatización industrial en Angol Chile."
 />
 ```
 
@@ -165,13 +165,13 @@ Erick Ortega fullstack Chile
 
 ## Solución de problemas
 
-| Síntoma | Causa probable | Solución |
-| --- | --- | --- |
-| `/robots.txt` da 404 | Los cambios aún no se desplegaron | Haz `push` y espera a que termine el deploy. |
-| La vista previa no muestra imagen | La URL de la imagen no es pública o está en caché | Verifica `og-image.webp` en vivo y limpia caché de Cloudflare. |
-| Aparece dos veces, con y sin `www` | Falta canonical o redirección | Ya está configurado: `301` a `www` + canonical. |
-| No aparece en Google | Falta verificación o tiempo de indexación | Usa Search Console y solicita indexación. |
-| Google ve poco texto | El contenido se renderiza con React | Es normal; opcionalmente usa prerender/SSR para servir HTML estático. |
+| Síntoma                            | Causa probable                                    | Solución                                                              |
+| ---------------------------------- | ------------------------------------------------- | --------------------------------------------------------------------- |
+| `/robots.txt` da 404               | Los cambios aún no se desplegaron                 | Haz `push` y espera a que termine el deploy.                          |
+| La vista previa no muestra imagen  | La URL de la imagen no es pública o está en caché | Verifica `og-image.webp` en vivo y limpia caché de Cloudflare.        |
+| Aparece dos veces, con y sin `www` | Falta canonical o redirección                     | Ya está configurado: `301` a `www` + canonical.                       |
+| No aparece en Google               | Falta verificación o tiempo de indexación         | Usa Search Console y solicita indexación.                             |
+| Google ve poco texto               | El contenido se renderiza con React               | Es normal; opcionalmente usa prerender/SSR para servir HTML estático. |
 
 ---
 

@@ -9,7 +9,7 @@ API REST que recibe las solicitudes del formulario de contacto de
    responder directamente.
 2. **Auto-respuesta al visitante** confirmando que su mensaje fue recibido.
 
-**Stack:** Node.js + TypeScript + Express + Nodemailer (Zod para validación).
+**Stack:** Node.js + TypeScript + Express + API REST de Brevo (Zod para validación).
 
 ## Estructura
 
@@ -28,7 +28,7 @@ backend/
 │   │   └── health.controller.ts
 │   ├── services/                   # Lógica de negocio y de correo
 │   │   ├── contact.service.ts      #   caso de uso "solicitud de contacto"
-│   │   └── mail.service.ts         #   transporte Nodemailer + envíos
+│   │   └── mail.service.ts         #   cliente de la API de Brevo (HTTPS) + envíos
 │   ├── middlewares/
 │   │   ├── rateLimiter.ts          #   límites global y del formulario
 │   │   ├── validateBody.ts          #   validación de body con zod
@@ -105,7 +105,7 @@ Comprobación de disponibilidad. Responde `200` con
 | Límite de carga 10 KB   | `express.json` / `express.urlencoded` con `limit: '10kb'` |
 | Validación estricta     | `validators/contact.validator.ts` (zod) + rechazo de caracteres de control (anti inyección de cabeceras CRLF) |
 | Escape de HTML          | `utils/html.ts` — el contenido usuario se escapa antes de entrar a las plantillas de correo |
-| Secretos en `.env`     | credenciales SMTP fuera de git (`SMTP_USER`, `SMTP_PASS`) |
+| Secretos en `.env`     | credencial de la API fuera de git (`BREVO_API_KEY`) |
 | Errores opacos          | `middlewares/errorHandler.ts` — sin stack traces al cliente |
 | `x-powered-by` oculto   | `app.ts`                                               |
 
@@ -119,19 +119,15 @@ Copia `.env.example` a `.env` y completa los valores. Variables:
 | `PORT`           | puerto HTTP                                              | `3000`                        |
 | `APP_URL`        | URL pública del sitio (plantillas de correo)             | `https://erickortegadev.cl`   |
 | `CORS_ORIGIN`    | orígenes CORS permitidos, separados por coma              | `http://localhost:5173`       |
-| `TRUST_PROXY`     | `true` detrás de nginx/Cloudflare (rate limit por IP real)| `false`                       |
+| `TRUST_PROXY`     | `true` detrás de un proxy (Render, nginx, Cloudflare)     | `false`                       |
 | `CONTACT_EMAIL`   | buzón que recibe las solicitudes (obligatorio)           | —                              |
 | `MAIL_FROM_NAME`  | nombre visible del remitente                             | `Erick Ortega`                |
-| `MAIL_FROM`      | dirección del remitente (usa `CONTACT_EMAIL` si se omite)| —                              |
-| `SMTP_HOST`      | host SMTP (obligatorio en producción)                     | —                              |
-| `SMTP_PORT`      | puerto SMTP                                              | `587`                         |
-| `SMTP_SECURE`    | `true` solo para 465 (SSL); `false` para 587 (STARTTLS)  | `false`                       |
-| `SMTP_USER`      | usuario SMTP (obligatorio en producción)                   | —                              |
-| `SMTP_PASS`      | contraseña SMTP (obligatorio en producción)               | —                              |
+| `MAIL_FROM`      | remitente verificado en Brevo (usa `CONTACT_EMAIL` si omite)| —                            |
+| `BREVO_API_KEY`   | API key de Brevo (obligatoria en producción)             | —                              |
 
-> Sin credenciales SMTP en desarrollo, la API arranca igual y los correos
-> se simulan por consola (transporte JSON), para poder desarrollar sin
-> secretos. En producción falta de SMTP hace fallar el arranque.
+> Sin `BREVO_API_KEY` en desarrollo, la API arranca igual y los correos se
+> simulan por consola, para poder desarrollar sin secretos. En producción su
+> ausencia hace fallar el arranque.
 
 ## Ejecución
 
@@ -146,12 +142,45 @@ npm run typecheck      # verificación de tipos sin emitir
 npm run smoke          # smoke test contra localhost:3000 (requiere npm run dev)
 ```
 
-## Pruebas locales de correo con Ethereal
+## Configuración de Brevo
 
-Sin un SMTP real puedes usar [Ethereal](https://ethereal.email): crea una
-cuenta de prueba, coloca sus credenciales en `.env`
-(`SMTP_HOST=smtp.ethereal.email`, `SMTP_PORT=587`, `SMTP_SECURE=false`) y la
-API logueará un link de vista previa de cada correo enviado.
+1. Crea una cuenta en [Brevo](https://www.brevo.com/) (el plan gratuito
+   incluye 300 envíos/día, suficiente para un formulario de contacto).
+2. Verifica el remitente: *Senders* → añade `contacto@erickortegadev.cl` (o el
+   valor que uses en `MAIL_FROM`) y confirma el correo de verificación.
+3. Genera una API key con permisos de envío y guárdala en `BREVO_API_KEY`.
+4. Para mejorar la entregabilidad, agrega en el DNS de Hostinger los registros
+   **SPF / DKIM / DMARC** que te indique Brevo para `erickortegadev.cl`.
+   **No cambies los registros MX**: el correo entrante sigue llegando al buzón
+   de Hostinger.
+
+## Despliegue en Render (plan Free)
+
+Los servicios Free de Render **no pueden enviar tráfico saliente por los
+puertos SMTP 25, 465 y 587**; por eso el envío se hace por HTTPS a la API de
+Brevo (puerto 443).
+
+Variables a configurar en Render → *Environment*:
+
+```text
+NODE_ENV=production
+CORS_ORIGIN=https://erickortegadev.cl,https://www.erickortegadev.cl
+TRUST_PROXY=true
+CONTACT_EMAIL=contacto@erickortegadev.cl
+MAIL_FROM_NAME=Erick Ortega
+MAIL_FROM=contacto@erickortegadev.cl
+BREVO_API_KEY=...
+```
+
+`PORT` la asigna Render automáticamente. Build Command:
+`npm install && npm run build`. Start Command: `npm start`.
+
+`TRUST_PROXY=true` es obligatorio: Render envía `X-Forwarded-For` y sin
+esta variable `express-rate-limit` falla con
+`ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`.
+
+Comprueba el despliegue con `GET /api/health`: debe devolver
+`"mailer": "brevo (API HTTPS)"`.
 
 ## Conexión con el frontend
 
@@ -174,6 +203,8 @@ const sendEmail = async (data: FormDataType) => {
 };
 ```
 
-En producción el frontend debería llamar a la API por una ruta relativa
-(mismo dominio tras el proxy inverso), dejando `CORS_ORIGIN` solo para
-desarrollo.
+En producción, si el frontend está en Hostinger y el backend en Render, la URL
+debe ser **absoluta** (`https://TU-SERVICIO.onrender.com/api/contact`). Vite
+incorpora `VITE_MAILING` al compilar, así que hay que reconstruir el frontend
+después de cambiarla. Si en cambio ambos están bajo el mismo dominio mediante
+un proxy inverso, se puede usar la ruta relativa `/api/contact`.
