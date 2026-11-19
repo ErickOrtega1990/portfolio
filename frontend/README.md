@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## SEO del portafolio
+
+Para detalles sobre metadatos, sitemap, `robots.txt` y cómo indexar el sitio en Google, consulta [SEO.md](./SEO.md).
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
