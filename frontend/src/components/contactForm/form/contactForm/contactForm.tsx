@@ -94,6 +94,8 @@ function ContactForm() {
         <span className={style.t2}>{lenguage.Contact.txt2}</span>
         <p className={style.p}>{lenguage.Contact.txt3}</p>
         <p className={style.p}>{lenguage.Contact.txt4}</p>
+        {message !== "" && <StatusFlag message={message} />}
+        {isPending && <StatusFlag message={message} />}
       </div>
       <div className={style.inputContainer}>
         <TextInput
@@ -126,8 +128,6 @@ function ContactForm() {
           type="submit"
           value={lenguage.Contact.form.txt4}
         />
-        {message !== "" && <StatusFlag message={message} />}
-        {isPending && <StatusFlag message={message} />}
       </div>
     </form>
   );
