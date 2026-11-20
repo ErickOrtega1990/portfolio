@@ -22,45 +22,45 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Demo web emprendedores",
-    subtitle: "Landign page",
+    title: "",
+    subtitle: "",
     href: "https://demos-ldzu.onrender.com/",
     technologies: ["React", "TypeScript"],
     image: demoImg,
     underDevelopment: false,
-    description: `Demo de landing page para contacto, inspirada en emprendedores artesanales. Una página dividida en seis secciones: "Inicio", "Sobre mí", "Mi trabajo", "Productos", "Cómo comprar", "Contacto"`,
+    description: "",
   },
   {
-    title: "Demo web mueblería",
-    subtitle: "Landing page",
+    title: "",
+    subtitle: "",
     href: "https://demos1-dgb9.onrender.com/",
     technologies: ["React", "TypeScript"],
     image: demo1Img,
     underDevelopment: false,
-    description: `Demo de landing page para contacto, inspirada en el diseño de estilo industrial. Una página dividida en seis secciones: "Inicio", "El estudio", "Nuestro proceso", "Colección", "Cómo comprar", "Cotizar"`,
+    description: "",
   },
   {
-    title: "Demo web mueblería",
-    subtitle: "Tienda virtual",
+    title: "",
+    subtitle: "",
     technologies: ["React", "Node", "MongoDB", "TypeScript"],
     image: demo2Img,
     underDevelopment: true,
-    description:
-      "Tienda virtual con catalogo por categorias modifcable por administrador, validación de email, cuentas de usuario, carrito de compra, historial de pedidos y botón de pago y envio de notificación de compra con número de pedido a contacto de ventas.",
+    description: "",
   },
 ];
 
 function Proyectos() {
   const { lenguage } = useContext(lenguagesContext);
+  const cardsTexts = lenguage.Projects.cards;
   return (
     <section id="proyectos" className={style.projects}>
       <h1 className={style.h1}>{lenguage.Projects.txt0}</h1>
       <div className={style.projectsGrid}>
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <ProjectCard
             key={project.title}
-            title={project.title}
-            subtitle={project.subtitle}
+            title={cardsTexts[index].title}
+            subtitle={cardsTexts[index].subtitle}
             href={project.href}
             linkLabel={lenguage.Projects.txt1}
             underDevelopment={project.underDevelopment}
@@ -68,7 +68,7 @@ function Proyectos() {
             readMoreLabel={lenguage.Projects.txt3}
             readLessLabel={lenguage.Projects.txt4}
             technologies={project.technologies}
-            description={project.description}
+            description={cardsTexts[index].description}
             image={project.image}
           />
         ))}

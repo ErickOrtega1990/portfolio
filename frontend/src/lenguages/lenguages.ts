@@ -49,6 +49,23 @@ export const lenguages = {
       txt2: "En desarrollo",
       txt3: "Leer más",
       txt4: "Leer menos",
+      cards: [
+        {
+          title: "Demo web emprendedores",
+          subtitle: "Página de contacto",
+          description: `Demo de landing page para contacto, inspirada en emprendedores artesanales. Una página dividida en seis secciones: "Inicio", "Sobre mí", "Mi trabajo", "Productos", "Cómo comprar", "Contacto"`,
+        },
+        {
+          title: "Demo web mueblería",
+          subtitle: "Página de contacto",
+          description: `Demo de landing page para contacto, inspirada en el diseño de estilo industrial. Una página dividida en seis secciones: "Inicio", "El estudio", "Nuestro proceso", "Colección", "Cómo comprar", "Cotizar"`,
+        },
+        {
+          title: "Demo web mueblería",
+          subtitle: "Tienda virtual",
+          description: `Tienda virtual con catalogo por categorias modifcable por administrador, validación de email, cuentas de usuario, carrito de compra, historial de pedidos y botón de pago y envio de notificación de compra con número de pedido a contacto de ventas.`,
+        },
+      ],
     },
     Contact: {
       txt0: "Contacto",
@@ -130,6 +147,23 @@ export const lenguages = {
       txt2: "In development",
       txt3: "Read more",
       txt4: "Read less",
+      cards: [
+        {
+          title: "Entrepreneurs web demo",
+          subtitle: "Contact page",
+          description: `Contact landing page demo, inspired by artisanal entrepreneurs. A page divided into six sections: "Home", "About me", "My work", "Products", "How to buy", "Contact"`,
+        },
+        {
+          title: "Furniture store web demo",
+          subtitle: "Contact page",
+          description: `Contact landing page demo, inspired by industrial-style design. A page divided into six sections: "Home", "The studio", "Our process", "Collection", "How to buy", "Get a quote"`,
+        },
+        {
+          title: "Furniture store web demo",
+          subtitle: "Online store",
+          description: `Online store with a category-based catalog editable by an administrator, email validation, user accounts, shopping cart, order history, a payment button, and purchase notifications sent with the order number to the sales contact.`,
+        },
+      ],
     },
     Contact: {
       txt0: "Contact",

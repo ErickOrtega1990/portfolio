@@ -48,6 +48,23 @@ type Texts = {
     txt2: string;
     txt3: string;
     txt4: string;
+    cards: [
+      {
+        title: string;
+        subtitle: string;
+        description: string;
+      },
+      {
+        title: string;
+        subtitle: string;
+        description: string;
+      },
+      {
+        title: string;
+        subtitle: string;
+        description: string;
+      },
+    ];
   };
   Contact: {
     txt0: string;
