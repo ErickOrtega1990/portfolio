@@ -32,7 +32,7 @@ function ContactForm() {
     const controller = new AbortController();
 
     setIsPending(true);
-    setMessage("pending");
+    setMessage("");
 
     timeoutRef.current = setTimeout(() => {
       controller.abort();
@@ -95,7 +95,7 @@ function ContactForm() {
         <p className={style.p}>{lenguage.Contact.txt3}</p>
         <p className={style.p}>{lenguage.Contact.txt4}</p>
         {message !== "" && <StatusFlag message={message} />}
-        {isPending && <StatusFlag message={message} />}
+        {isPending && <StatusFlag message={"pending"} />}
       </div>
       <div className={style.inputContainer}>
         <TextInput
