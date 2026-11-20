@@ -32,7 +32,7 @@ function ContactForm() {
     const controller = new AbortController();
 
     setIsPending(true);
-    setMessage("");
+    setMessage("pending");
 
     timeoutRef.current = setTimeout(() => {
       controller.abort();
