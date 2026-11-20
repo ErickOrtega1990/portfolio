@@ -12,14 +12,12 @@ export type FormDataType = {
 };
 
 const TIMEOUT_MS = 60000;
-const TIMEOUT_MESSAGE =
-  "Error al enviar su correo, por favor, inténtelo mas tarde";
 
 function ContactForm() {
   const { register, reset } = useForm();
   const { lenguage } = useContext(lenguagesContext);
   const [isPending, setIsPending] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<"error" | "pending" | "done" | "">("");
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearPendingTimeout = () => {
@@ -38,7 +36,7 @@ function ContactForm() {
 
     timeoutRef.current = setTimeout(() => {
       controller.abort();
-      setMessage(TIMEOUT_MESSAGE);
+      setMessage("error");
       setIsPending(false);
       timeoutRef.current = null;
     }, TIMEOUT_MS);
@@ -57,19 +55,11 @@ function ContactForm() {
 
       clearPendingTimeout();
 
-      res.status === 200
-        ? setMessage(
-            "Su mensaje ha sido enviado exitosamente, dentro de poco recibirá la confirmación en su correo electrónico",
-          )
-        : setMessage(
-            "Hubo un error al enviar su mensaje, por favor, inténtelo de nuevo mas tarde.",
-          );
+      res.status === 200 ? setMessage("done") : setMessage("error");
     } catch (error) {
       if (timeoutRef.current !== null) {
         clearPendingTimeout();
-        setMessage(
-          "Hubo un error al enviar su mensaje, por favor, inténtelo de nuevo mas tarde.",
-        );
+        setMessage("error");
       }
     } finally {
       setIsPending(false);
@@ -83,9 +73,6 @@ function ContactForm() {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // El autocompletado del navegador escribe directamente en el DOM sin
-    // disparar el onChange de React, por lo que react-hook-form no conoce
-    // esos valores. Leemos el formulario para enviar lo que ve el usuario.
     const formData = new FormData(event.currentTarget);
     sendEmail({
       name: String(formData.get("name") ?? ""),
@@ -109,11 +96,6 @@ function ContactForm() {
         <p className={style.p}>{lenguage.Contact.txt4}</p>
       </div>
       <div className={style.inputContainer}>
-        {/* Chrome ignora autoComplete="off" en campos de nombre y correo y
-            sigue ofreciendo el autocompletado. "new-password" es el único
-            valor que respeta de forma fiable en estos campos: no hay ningún
-            campo de contraseña real, se usa solo para desactivar las
-            sugerencias del navegador. */}
         <TextInput
           type="text"
           id="nombre"
@@ -145,7 +127,7 @@ function ContactForm() {
           value={lenguage.Contact.form.txt4}
         />
         {message !== "" && <StatusFlag message={message} />}
-        {isPending && <StatusFlag message="Enviando..." />}
+        {isPending && <StatusFlag message={message} />}
       </div>
     </form>
   );

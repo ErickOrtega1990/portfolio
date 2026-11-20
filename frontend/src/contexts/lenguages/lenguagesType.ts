@@ -57,6 +57,11 @@ type Texts = {
       txt3: string;
       txt4: string;
     };
+    Response: {
+      pending: string;
+      error: string;
+      done: string;
+    };
     txt1: string;
     txt2: string;
     txt3: string;

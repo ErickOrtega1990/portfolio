@@ -62,6 +62,12 @@ export const lenguages = {
       txt2: "¡Contáctame!",
       txt3: "Responderé a tu correo elctrónico lo antes posible.",
       txt4: "Si tienes alguna duda sobre la protección de tus datos, por favor revisa los términos de uso y privacidad.",
+      Response: {
+        pending: "Enviando",
+        done: "Su mensaje ha sido enviado, pronto recibirá una confirmación en su correo electrónico.",
+        error:
+          "Ha ocurrido un error al enviar su mensaje, por favor, inténtelo mas tarde.",
+      },
     },
     footer: {
       nav: "Navegación",
@@ -132,6 +138,11 @@ export const lenguages = {
         txt2: "Enter your email address",
         txt3: "Your message here",
         txt4: "Send",
+      },
+      Response: {
+        pending: "Sending...",
+        done: "Your message has been received, you will soon receive a confirmation email.",
+        error: "An error has ocurred, please, try again later.",
       },
       txt1: "Any questions?",
       txt2: "Contact me!",
