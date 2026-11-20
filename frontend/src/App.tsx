@@ -12,11 +12,19 @@ import type { Texts } from "./contexts/lenguages/lenguagesType.ts";
 import { lenguages } from "./lenguages/lenguages.ts";
 import lenguagesContext from "./contexts/lenguages/lenguagesContext.ts";
 
+const health_URL = import.meta.env.VITE_MAILING_HEALT;
+
 function App() {
   const [lenguage, setLenguage] = useState<Texts>(lenguages.ES);
 
   const changeLenguage = useCallback((current: Texts) => {
     setLenguage(current === lenguages.ES ? lenguages.EN : lenguages.ES);
+
+    try {
+      fetch(health_URL, {
+        method: "GET",
+      });
+    } catch {}
   }, []);
 
   const contextValue = useMemo(
