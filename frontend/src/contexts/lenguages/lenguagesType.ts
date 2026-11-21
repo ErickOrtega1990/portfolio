@@ -14,6 +14,13 @@ type Texts = {
     txt3: string;
     txt4: string;
   };
+  underConstruction: {
+    kicker: string;
+    title: string;
+    accent: string;
+    description: string;
+    home: string;
+  };
   About1: {
     txt1: string;
     txt2: string;

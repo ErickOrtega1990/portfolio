@@ -11,6 +11,7 @@ import { useCallback, useMemo, useState } from "react";
 import type { Texts } from "./contexts/lenguages/lenguagesType.ts";
 import { lenguages } from "./lenguages/lenguages.ts";
 import lenguagesContext from "./contexts/lenguages/lenguagesContext.ts";
+import UnderConstruction from "./components/underConstruction/UnderConstruction.tsx";
 
 const health_URL = import.meta.env.VITE_MAILING_HEALT;
 
@@ -34,14 +35,15 @@ function App() {
 
   return (
     <lenguagesContext.Provider value={contextValue}>
-      <Header>
+      {/* <Header>
         <Navbar2 />
       </Header>
       <Home />
       <About />
       <Proyectos />
       <Contacto />
-      <Footer />
+      <Footer /> */}
+      <UnderConstruction></UnderConstruction>
     </lenguagesContext.Provider>
   );
 }

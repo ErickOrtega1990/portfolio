@@ -15,6 +15,13 @@ export const lenguages = {
       txt3: "web stack MERN e IoT",
       txt4: "Descarga mi C.V.",
     },
+    underConstruction: {
+      kicker: "Próximamente",
+      title: "Sitio en construcción",
+      accent: "¡Vuelve pronto!",
+      description:
+        "Estoy preparando nuevas cosas para este sitio. Pronto podras ver mi portafolio.",
+    },
     About1: {
       txt1: "Formación profesional",
       txt2: "Ingeniero en automatización y robótica graduado en 2019 de la universidad Andrés Bello en Santiago de Chile. Especializado en desarrollo de software para automatización de maquinaria y robótica industrial.",
@@ -112,6 +119,14 @@ export const lenguages = {
       txt2: "Fullstack developer.",
       txt3: "MERN web stack and IoT",
       txt4: "Download my CV.",
+    },
+    underConstruction: {
+      kicker: "Coming soon",
+      title: "Site under construction",
+      accent: "Stay tuned!",
+      description:
+        "I'm working on something new for this site. In the meantime, you can explore the full portfolio.",
+      home: "Back to home",
     },
     About1: {
       txt1: "Professional education",
